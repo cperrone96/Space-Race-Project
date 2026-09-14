@@ -6,8 +6,13 @@ from dash import html
 from dash.dependencies import Input, Output
 import plotly.express as px
 
-# Read the airline data into pandas dataframe
-spacex_df = pd.read_csv("spacex_launch_dash.csv")
+from pathlib import Path
+import os
+
+# The checked-in fixture makes the coursework demo launchable from a clean
+# checkout. Set SPACEX_DATA_PATH to use a separately retrieved IBM extract.
+DATA_PATH = Path(os.environ.get("SPACEX_DATA_PATH", Path(__file__).parent / "data" / "launch_fixture.csv"))
+spacex_df = pd.read_csv(DATA_PATH)
 max_payload = spacex_df['Payload Mass (kg)'].max()
 min_payload = spacex_df['Payload Mass (kg)'].min()
 
@@ -45,8 +50,7 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
         min=0,
         max=10000,
         step=1000,
-        marks={i: f'{i}' for i in range(int(spacex_df['Payload Mass (kg)'].min()),
-                                        int(spacex_df['Payload Mass (kg)'].max())+1, 1000)},
+    marks={i: f'{i}' for i in range(0, int(spacex_df['Payload Mass (kg)'].max()) + 1000, 1000)},
         value=[spacex_df['Payload Mass (kg)'].min(), spacex_df['Payload Mass (kg)'].max()],
     ),
     html.Br(),
@@ -120,4 +124,4 @@ def update_scatter_chart(selected_site, payload_range):
 
 # Run the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

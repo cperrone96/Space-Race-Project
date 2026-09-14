@@ -1,49 +1,49 @@
-# Predicting SpaceX Falcon 9 First-Stage Landings
+# Falcon 9 first-stage landing prediction — IBM coursework
 
-End-to-end data science capstone that predicts whether the **Falcon 9 first
-stage will land successfully** — the key driver of SpaceX's launch cost
-advantage. The project runs the full pipeline: data collection, cleaning,
-exploratory analysis, interactive visualization, and machine-learning
-classification.
+This repository is explicitly an **IBM Data Science Professional Certificate
+capstone coursework artifact**. It documents completed course labs (API
+collection, web scraping, SQL, EDA, Folium, Dash, and classification). It is
+not professional SpaceX work, production experience, or a deployed launch
+decision system.
 
-## Pipeline
+## Reproducible local gate
 
-| Stage | Notebook | Tools |
-|---|---|---|
-| Data collection (API) | `jupyter-labs-spacex-data-collection-api.ipynb` | SpaceX REST API, `requests`, pandas |
-| Data collection (web scraping) | `SpaceX Webscraping.ipynb` | `BeautifulSoup`, Wikipedia |
-| Data wrangling | `SpaceX Data Wrangling.ipynb` | pandas, feature/label engineering |
-| EDA with SQL | `SpaceX EDA with SQL.ipynb` | SQLite, `ipython-sql` |
-| EDA & feature engineering | `SpaceX EDA and Ft Engineering.ipynb` | pandas, matplotlib, seaborn, one-hot encoding |
-| Interactive maps | `SpaceX Interactive Visual Analytics with Folium.ipynb` | Folium |
-| Interactive dashboard | `spacex_dash_app (1).py` | Plotly Dash |
-| Predictive modeling | `SpaceX Prediction Analysis.ipynb` | scikit-learn (LogReg, SVM, Decision Tree, KNN), GridSearchCV |
-
-## Approach
-
-1. **Collect** launch records from the SpaceX API and by scraping Wikipedia.
-2. **Wrangle** into a clean dataset and derive a binary landing-outcome label.
-3. **Explore** launch-site, payload, orbit, and booster-version relationships
-   with SQL and visual EDA.
-4. **Visualize** launch sites and outcomes interactively (Folium + a Plotly
-   Dash app).
-5. **Model** landing success with several classifiers, tuning hyperparameters
-   via `GridSearchCV` and comparing accuracy on a held-out test set.
-
-## Skills demonstrated
-
-REST API extraction · web scraping · data wrangling · SQL EDA · interactive
-geospatial viz · dashboarding · supervised classification & model selection.
-
-## Run it
+The original IBM static extracts are remote course materials. Because they are
+not bundled, `data/launch_fixture.csv` is a checked-in schema/smoke fixture: it
+preserves the 90-row course label vector and deterministic feature columns but
+must not be interpreted as newly collected SpaceX observations. URLs, source
+versions, and the fixture SHA-256 are recorded in
+[`data/SOURCE_MANIFEST.json`](data/SOURCE_MANIFEST.json).
 
 ```bash
-pip install pandas numpy requests beautifulsoup4 matplotlib seaborn scikit-learn folium plotly dash
-jupyter lab
+python -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+python spacex_analysis.py --data data/launch_fixture.csv --output-dir outputs
+pytest -q
 ```
 
-Run the notebooks in the pipeline order above. To launch the dashboard:
-`python "spacex_dash_app (1).py"` then open the local URL it prints.
+The analysis reports class prevalence, a majority-class accuracy baseline,
+average precision (PR-AUC), ROC-AUC, Brier score, and repeated stratified
+5-fold cross-validation (20 repeats). The small sample makes uncertainty wide;
+the original single holdout and hyperparameter-search scores should not be
+treated as independent performance estimates. The output is a coursework
+demonstration, not evidence that a model can guide launch or safety decisions.
 
----
-*IBM Data Science Professional Certificate capstone.*
+## Results and limitations
+
+The current local fixture has 90 rows and 66.7% positive labels, so the
+majority accuracy baseline is 66.7%. Run the command above for the exact
+cross-validated PR metrics in `outputs/metrics.json`. These metrics describe
+the fixture only. The feature set is a retrospective teaching exercise, the
+label prevalence is small-sample dependent, and there is no prospective or
+time-based validation. No causal or operational conclusions are claimed.
+
+## Coursework notebooks and dashboard
+
+The notebooks retain the IBM lab sequence and are archival educational
+materials. The canonical local smoke path above is network-independent. The
+Dash app reads `data/launch_fixture.csv` by default (or `SPACEX_DATA_PATH`) and
+can be launched with `python "spacex_dash_app (1).py"`; it is a visualization
+demo, not a production dashboard. The historical web-scraping notebook is kept
+separate from the canonical fixture path because live scraping is inherently
+fragile and source pages change.

@@ -1,0 +1,30 @@
+{
+  "n": 90,
+  "positive_count": 60,
+  "class_prevalence": 0.6666666666666666,
+  "majority_baseline_accuracy": 0.6666666666666666,
+  "repeated_stratified_cv": {
+    "splits": 5,
+    "repeats": 20,
+    "seed": 32021
+  },
+  "average_precision": 0.6767508084236027,
+  "roc_auc": 0.43,
+  "brier_score": 0.2444634016097514,
+  "pr_auc_excess_over_prevalence": 0.01008414175693606,
+  "uncertainty_95pct": {
+    "average_precision": [
+      0.544994650638033,
+      0.8208390147774339
+    ],
+    "roc_auc": [
+      0.20763888888888887,
+      0.6461805555555554
+    ],
+    "brier_score": [
+      0.2133714777009651,
+      0.30287925621209005
+    ]
+  },
+  "evaluation_note": "Repeated stratified cross-validation is uncertainty evidence for this small coursework sample; the original lab's single holdout is not an independent estimate."
+}
