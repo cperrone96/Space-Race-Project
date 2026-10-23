@@ -9,9 +9,8 @@ import plotly.express as px
 from pathlib import Path
 import os
 
-# The checked-in fixture makes the coursework demo launchable from a clean
-# checkout. Set SPACEX_DATA_PATH to use a separately retrieved IBM extract.
-DATA_PATH = Path(os.environ.get("SPACEX_DATA_PATH", Path(__file__).parent / "data" / "launch_fixture.csv"))
+# IBM course extract of 56 launches with site, payload and booster category.
+DATA_PATH = Path(os.environ.get("SPACEX_DATA_PATH", Path(__file__).parent / "data" / "raw" / "spacex_launch_dash.csv"))
 spacex_df = pd.read_csv(DATA_PATH)
 max_payload = spacex_df['Payload Mass (kg)'].max()
 min_payload = spacex_df['Payload Mass (kg)'].min()
@@ -72,8 +71,7 @@ def get_pie_chart(entered_site):
         
         # Create the pie chart for the total successes at each launch site
         fig = px.pie(site_summary, values='class', names='Launch Site', 
-                     title='Total Launch Success by Site', 
-                     color_discrete_map={'Launch Site': 'green'})
+                     title='Total Launch Success by Site')
 
     else:
         # Filter the dataframe based on the selected site

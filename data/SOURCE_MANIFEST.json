@@ -1,14 +1,16 @@
 {
-  "project_label": "IBM Data Science Professional Certificate capstone coursework",
-  "source_urls": {
-    "api_static_response": "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0321EN-SkillsNetwork/datasets/API_call_spacex_api.json",
-    "dataset_part_1": "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0321EN-SkillsNetwork/datasets/dataset_part_1.csv",
-    "dataset_part_2": "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0321EN-SkillsNetwork/datasets/dataset_part_2.csv",
-    "dataset_part_3": "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0321EN-SkillsNetwork/datasets/dataset_part_3.csv",
-    "web_archive": "https://en.wikipedia.org/w/index.php?title=List_of_Falcon_9_and_Falcon_Heavy_launches&oldid=1027686922"
+  "description": "IBM Data Science Professional Certificate (Applied Data Science Capstone, DS0321EN) course extracts, downloaded unchanged.",
+  "retrieved": "2026-10-23",
+  "base_url": "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DS0321EN-SkillsNetwork/",
+  "files": {
+    "raw/API_call_spacex_api.json": {"url_path": "datasets/API_call_spacex_api.json", "sha256": "a94498f2971099af19926d1b538e784803db3d88eeade9035639e088b0a8fe1e", "content": "static snapshot of the SpaceX REST API v4 /launches/past response"},
+    "raw/dataset_part_1.csv": {"url_path": "datasets/dataset_part_1.csv", "sha256": "606fecaf0209f41cc79aeb383b8519ba854bab8b198762952bf0c3c34e0c6c6f", "content": "90 Falcon 9 launches built from the API, before labeling"},
+    "raw/dataset_part_2.csv": {"url_path": "datasets/dataset_part_2.csv", "sha256": "176e74024eb330504fc392a2784dc0b25a605f5748d2f7df6d490f073c08edeb", "content": "the same 90 launches with the binary landing label Class"},
+    "raw/dataset_part_3.csv": {"url_path": "datasets/dataset_part_3.csv", "sha256": "cd88834e78fd23cca1500590092d91a9f29b5e5be1a9367f0c27ba48e2607f4c", "content": "course one-hot feature table (83 columns)"},
+    "raw/Spacex.csv": {"url_path": "labs/module_2/data/Spacex.csv", "sha256": "eab92c7d65e5c7e1eaf3177917283f8dc5ff5cafe5f286bac47e22c4024b997b", "content": "101 launch records used in the SQL lab"},
+    "raw/spacex_launch_geo.csv": {"url_path": "datasets/spacex_launch_geo.csv", "sha256": "7c901d477e8b7916d975bb5dced8f6e5ac0bd0121aa27f3796659a289eb7013a", "content": "launches with site coordinates for the Folium lab"},
+    "raw/spacex_launch_dash.csv": {"url_path": "datasets/spacex_launch_dash.csv", "sha256": "e19fe7a7870631d66c9c08c57dea6306aa5d8f721bebe9edbaa3b4fc8419bfd2", "content": "56 launches for the Plotly Dash app"}
   },
-  "source_version": "IBM Skills Network DS0321EN static course extracts; Wikipedia oldid 1027686922",
-  "retrieval_note": "The original remote extracts are not bundled. The checked-in fixture is a schema/smoke artifact preserving the 90 course labels and is not a new SpaceX observation set.",
-  "local_fixture": "launch_fixture.csv",
-  "local_fixture_sha256": "06563afced899bc5dd8c2169c8c078a222ddccbb94d55cdbdc0720e4d639a265"
+  "web_scraping_source": "https://en.wikipedia.org/w/index.php?title=List_of_Falcon_9_and_Falcon_Heavy_launches&oldid=1027686922",
+  "upstream_api": "https://github.com/r-spacex/SpaceX-API (api.spacexdata.com/v4)"
 }

@@ -1,17 +1,17 @@
-name: coursework-reproducibility
+name: reproducibility
 
 on:
   push:
   pull_request:
 
 jobs:
-  smoke:
+  analysis:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
       - run: pip install -r requirements.txt
-      - run: python spacex_analysis.py --data data/launch_fixture.csv --output-dir /tmp/spacex-output
       - run: pytest -q
+      - run: python spacex_analysis.py --output-dir /tmp/spacex-output

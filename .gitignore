@@ -1,0 +1,9 @@
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+.DS_Store
+# Intermediate tables written by the notebooks
+outputs/dataset_part_2.csv
+outputs/dataset_part_3.csv
+outputs/spacex_web_scraped.csv
