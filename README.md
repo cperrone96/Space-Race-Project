@@ -74,3 +74,7 @@ Results are deterministic for a fixed environment (seed 2021).
 - The data ends in 2020. Landings have since become routine, so the class balance and drivers no longer match current operations.
 - `01_data_collection_api.ipynb` is shown without outputs: its per-launch lookups call `api.spacexdata.com`, which returned HTTP 522 on 2026-10-23. Its output, `dataset_part_1.csv`, is included in `data/raw/`.
 - Folium maps don't render in GitHub's notebook preview. Open `06_launch_sites_folium.ipynb` in Jupyter or nbviewer.
+
+## License
+
+The original code and analysis in this repository are released under the [MIT License](LICENSE). The notebooks began as IBM Skills Network lab templates for the Applied Data Science Capstone (DS0321EN). IBM's template text and starter code remain © IBM Corporation and aren't covered by the MIT License. The datasets keep their original terms (see [Data](#data)).
